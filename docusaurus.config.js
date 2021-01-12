@@ -2,6 +2,9 @@ const math = require('remark-math')
 const katex = require('rehype-katex')
 remarkPlugins: [math],
 rehypePlugins: [katex],
+      stylesheets: [
+      'https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css',
+    ],
 module.exports = {
   title: 'Tadpole Finance Docs',
   tagline: 'Everything you need to know about Tadpole Finance.',
