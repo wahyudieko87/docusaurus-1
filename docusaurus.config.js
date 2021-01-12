@@ -1,5 +1,7 @@
-const math = require('remark-math');
-const katex = require('rehype-katex');
+const path = require("path");
+const _fs = require("fs");
+const remarkMath = require("remark-math");
+const rehypeKatex = require("rehype-katex");
 module.exports = {
   title: 'Tadpole Finance Docs',
   tagline: 'Everything you need to know about Tadpole Finance.',
@@ -10,15 +12,6 @@ module.exports = {
   favicon: 'img/favicon-tadpole.ico',
   organizationName: 'tadpole-finance', // Usually your GitHub org/user name.
   projectName: 'tadpole-protocol', // Usually your repo name.
-    stylesheets: [
-    {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css',
-      type: 'text/css',
-      integrity:
-        'sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X',
-      crossorigin: 'anonymous',
-    },
-  ],
   themeConfig: {
     navbar: {
       title: '',
@@ -154,13 +147,14 @@ module.exports = {
     [
       '@docusaurus/preset-classic',
       {
-        docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+                docs: {
+          sidebarPath: require.resolve("./sidebars.js"),
+          showLastUpdateTime: true,
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [[rehypeKatex, {strict: false}]],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-          remarkPlugins: [math],
-          rehypePlugins: [katex],
         },
       },
     ],
