@@ -1,7 +1,7 @@
-const path = require("path");
-const _fs = require("fs");
-const remarkMath = require("remark-math");
-const rehypeKatex = require("rehype-katex");
+const math = require('remark-math')
+const katex = require('rehype-katex')
+remarkPlugins: [math],
+rehypePlugins: [katex],
 module.exports = {
   title: 'Tadpole Finance Docs',
   tagline: 'Everything you need to know about Tadpole Finance.',
@@ -147,11 +147,11 @@ module.exports = {
     [
       '@docusaurus/preset-classic',
       {
-                docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
-          showLastUpdateTime: true,
-          remarkPlugins: [remarkMath],
-          rehypePlugins: [[rehypeKatex, {strict: false}]],
+                 docs: {
+          sidebarPath: require.resolve('./sidebars.js'),
+        },
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
